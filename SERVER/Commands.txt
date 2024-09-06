@@ -1,0 +1,8 @@
+1. To Create and Initialize New Project?
+npm init -y  it Will create Package.json
+
+
+2. Install Express,mongoose,nodemon,body-parser,cors,dotenv
+
+npm i express mongoose body-parser cors dotenv
+npm i nodemon --save-dev
