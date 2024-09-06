@@ -1,18 +1,39 @@
-const express=require('express')
-const dotenv=require('dotenv')
-const cors=require('cors')
-const bodyParser=require('body-parser')
+const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const addStudent=require('./controllers/student.controller');
 
 //Create Server
-const app=express();
-
+const app = express();
 //configure .dotenv file
 dotenv.config();
 
+
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 //For API health Checkup (http://localhost:5000/api/check)
+app.get("/api/check", (req, res) => res.send("App is Running"));
 
-app.get('/api/check',(req,res)=>res.send('App is Running'));
 
-app.listen(5000, () => {
-    console.log('App listening on port 5000!');
-});
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
+const dbUrl = process.env.DB_URL;
+const db = process.env.DB_NAME;
+
+mongoose
+  .connect(dbUrl, { dbName: db })
+  .then(() => {
+    console.log('\x1b[32m',"✅ Connected to MongoDB😁😁😁😁");
+    //if DB is Connected then only Server is Started;
+    app.listen(`${PORT}`, () => {
+      console.log('\x1b[35m',`✅  Server is Running on ${HOST}${PORT} 😁😁😁😁`);
+    });
+  })
+  .catch((error) => {
+    console.error("Database connection error:", error);
+    process.exit(1);
+  });
