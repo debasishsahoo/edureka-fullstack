@@ -13,5 +13,11 @@ const addStudent=async(req,res)=>{
       return res.status(500).send({ data: 'failure', error: 'Internal server error' });
   }
 }
+const getStudent=async()=>{};
+const getStudentById=async()=>{};
+const updateStudentById=async()=>{};
+const deleteStudentById=async()=>{};
 
-module.export=addStudent;
+
+
+module.export={addStudent,getStudent,getStudentById,updateStudentById,deleteStudentById};
