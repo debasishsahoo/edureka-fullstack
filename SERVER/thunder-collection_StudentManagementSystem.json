@@ -1,0 +1,93 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "StudentManagementSystem",
+    "collectionId": "443dc3ba-49d8-4007-94ff-c2633da308bd",
+    "dateExported": "2024-09-10T16:22:19.609Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "fd1267ba-65be-4ae4-85d3-0d9b84d3324f",
+            "colId": "443dc3ba-49d8-4007-94ff-c2633da308bd",
+            "containerId": "",
+            "name": "HEALTH_CHECKUP",
+            "url": "127.0.0.1:6000/api/check",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-06-25T09:03:06.315Z",
+            "modified": "2024-09-10T15:35:25.776Z",
+            "headers": []
+        },
+        {
+            "_id": "658d6ac7-0506-4fb7-8ef5-a602b265a0d9",
+            "colId": "443dc3ba-49d8-4007-94ff-c2633da308bd",
+            "containerId": "",
+            "name": "getAllStudent",
+            "url": "http://localhost:6000/api/student/",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-06-27T18:56:41.733Z",
+            "modified": "2024-06-27T18:56:41.733Z",
+            "headers": []
+        },
+        {
+            "_id": "c82509b4-e517-4334-afc1-140b94a5e84f",
+            "colId": "443dc3ba-49d8-4007-94ff-c2633da308bd",
+            "containerId": "",
+            "name": "AddStuent",
+            "url": "127.0.0.1:6000/api/student/",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-09-10T15:36:08.222Z",
+            "modified": "2024-09-10T15:45:23.692Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"regId\":2402,\n  \"name\":\"Debasish Sahoo\",\n  \"course\":\"MEAN STACK\",\n  \"section\":\"Z\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "233ae4dc-9bcb-49f0-a7ea-aac8174f5261",
+            "colId": "443dc3ba-49d8-4007-94ff-c2633da308bd",
+            "containerId": "",
+            "name": "getStudentByID",
+            "url": "http://localhost:6000/api/student/66e067f2dbc7e38da6768fe0",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-09-10T16:04:51.413Z",
+            "modified": "2024-09-10T16:06:49.041Z",
+            "headers": []
+        },
+        {
+            "_id": "ab0b0d1f-799e-4f87-99f1-3ff3285cf628",
+            "colId": "443dc3ba-49d8-4007-94ff-c2633da308bd",
+            "containerId": "",
+            "name": "updatestudentById",
+            "url": "http://localhost:6000/api/student/66e06993d93f0a64cbd9f65d",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-09-10T16:13:51.463Z",
+            "modified": "2024-09-10T16:15:36.427Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Anit Roy\",\n  \"course\":\"MEAN STACK\",\n  \"section\":\"Z\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "609d26c9-a571-4fbd-9a82-6d6f3d2741db",
+            "colId": "443dc3ba-49d8-4007-94ff-c2633da308bd",
+            "containerId": "",
+            "name": "deleteStudentById",
+            "url": "http://localhost:6000/api/student/66e06993d93f0a64cbd9f65d",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2024-09-10T16:20:10.515Z",
+            "modified": "2024-09-10T16:22:10.227Z",
+            "headers": []
+        }
+    ],
+    "ref": "Xazu19fhJpNbeZe1ximCw1yMDd8_zUWARcDiFehUfTnciVfK5rz3H-J2Vaf5hzMagN4NWaO2lbx68riJxdqFBg"
+}
