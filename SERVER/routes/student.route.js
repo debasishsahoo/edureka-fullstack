@@ -1,13 +1,13 @@
-const express=require('express');
-const studentControllers =require('../controllers/student.controller')
-const router=express.Router();
+const router=require('express').Router();
+const studentController =require('../controllers/student.controller')
 
 
-router.get('/',studentControllers.getStudent); //get All Student
-router.get('/:id',studentControllers.getStudentById); //get Single Student by Id
-router.post('/',studentControllers.addStudent);// Insert Single new Student Data
-router.put('/:id',studentControllers.updateStudentById);  // Update Single old Student Data
-router.delete('/:id',studentControllers.deleteStudentById);  // Delete Single Student Data
 
-module.export=router;
+router.post('/',studentController.addStudent); //get All Student
+router.get('/:id',studentController.getStudentById); //get Single Student by Id
+router.post('/',studentController.addStudent);// Insert Single new Student Data
+router.put('/:id',studentController.updateStudentById);  // Update Single old Student Data
+router.delete('/:id',studentController.deleteStudentById);  // Delete Single Student Data
+
+module.exports=router;
 

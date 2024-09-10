@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const addStudent=require('./controllers/student.controller');
+const studentRouter=require('./routes/student.route');
 
 //Create Server
 const app = express();
@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 
 //For API health Checkup (http://localhost:5000/api/check)
 app.get("/api/check", (req, res) => res.send("App is Running"));
+app.use('/api/student',studentRouter)
 
 
 const PORT = process.env.PORT;
