@@ -68,16 +68,19 @@ const adminSignIn = async (req, res) => {
         _id: oldAdmin._id,
         email: oldAdmin.email,
       };
-      const token = tokenUtility.generateToken(tokenPayload);
+      const token = await tokenUtility(tokenPayload);
       const tokenOption = {
         httpOnly: true,
         secure: true,
       };
 
+      const returnData={name:oldAdmin.name,isAdmin:oldAdmin.isAdmin,image:oldAdmin.image}
+
       return res.cookie("token", token, tokenOption).status(200).send({
         message: "success",
         error: null,
-        data: token
+        token:token,
+        data: returnData
       });
     } catch (error) {
       return res.status(500).send({ message: "failure", error: `${error}` });
