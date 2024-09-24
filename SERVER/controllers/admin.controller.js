@@ -1,29 +1,94 @@
 const mongoose = require("mongoose");
 const adminServices = require("../services/admin.services");
+const passwordUtility = require("../utils/encryption.util");
+const tokenUtility = require("../utils/Token.util");
 
-const addAdmin = async (req, res) => {
-  const { name, email, password, isAdmin } = req.body;
-  try {
-    const newAdmin = await adminServices.insertData({
-      name, 
-      email, 
-      password, 
-      isAdmin,
+const adminSignUp = async (req, res) => {
+  const { name, email, password } = req.body;
+
+  if (!email || !password || !name) {
+    return res.status(400).send({
+      message: "Please Provide All Data,name or email or password Messing",
+      error: "Bad Request",
     });
+  }
+  const oldAdmin = await adminServices.getDataByEmail({ email });
+  if (oldAdmin) {
+    return res.status(409).send({
+      message: "User Already Exits",
+      error: "Conflict",
+    });
+  }
+  const hashedPassword = await passwordUtility.hashPassword(password);
+  if (!hashedPassword) {
+    return res.status(401).send({
+      message: "Password Hashing is Getting Problem",
+      error: "Unauthorized",
+    });
+  }
+
+  const payload = {
+    ...req.body,
+    password: hashedPassword,
+  };
+  //console.log('payload:', payload)
+
+  try {
+    const newAdmin = await adminServices.insertData(payload);
+
     return res
-      .status(200)
+      .status(201)
       .send({ message: "success", error: null, data: newAdmin });
   } catch (error) {
-    if (error.keyValue.title === title) {
-      return res
-        .status(400)
-        .send({ message: "failure", error: "duplicate title" });
-    }
-    return res
-      .status(500)
-      .send({ message: "failure", error: "Internal server error" });
+    return res.status(500).send({ message: "failure", error: `${error}` });
   }
 };
+
+const adminSignIn = async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).send({
+      message: "Please Provide All Data, email or password Messing",
+      error: "Bad Request",
+    });
+  }
+  const oldAdmin = await adminServices.getDataByEmail({ email });
+  if (!oldAdmin) {
+    return res.status(404).send({
+      message: "User Not Found",
+      error: "Not Found",
+    });
+  }
+  const checkPassword = await passwordUtility.matchPassword(password,oldAdmin.password);
+
+  if (checkPassword) {
+    try {
+      const tokenPayload = {
+        _id: oldAdmin._id,
+        email: oldAdmin.email,
+      };
+      const token = tokenUtility.generateToken(tokenPayload);
+      const tokenOption = {
+        httpOnly: true,
+        secure: true,
+      };
+
+      return res.cookie("token", token, tokenOption).status(200).send({
+        message: "success",
+        error: null,
+        data: token
+      });
+    } catch (error) {
+      return res.status(500).send({ message: "failure", error: `${error}` });
+    }
+  }else{
+    return res.status(401).send({ message: "failure", error: 'Unauthorized Access' });
+  }
+
+  
+};
+
 const getAdmin = async (req, res) => {
   try {
     const allAdmin = await adminServices.getAllData();
@@ -85,23 +150,26 @@ const updateAdminById = async (req, res) => {
           data: null,
         });
       }
-      const updatedOldAdmin = await adminServices.updateDataById(
-        adminId,
-        {
-          name,
-          email,
-          password,
-          isAdmin,
-        }
-      );
-      return res.status(200).send({  message: "success", error: null,data: updatedOldAdmin });
-    } catch (error) {
+      const updatedOldAdmin = await adminServices.updateDataById(adminId, {
+        name,
+        email,
+        password,
+        isAdmin,
+      });
       return res
-        .status(500)
-        .send({ message: "failure", error: "internal server error", data: null });
+        .status(200)
+        .send({ message: "success", error: null, data: updatedOldAdmin });
+    } catch (error) {
+      return res.status(500).send({
+        message: "failure",
+        error: "internal server error",
+        data: null,
+      });
     }
   }
-  return res.status(400).send({ message: "failure", error: "id is not valid", data: null });
+  return res
+    .status(400)
+    .send({ message: "failure", error: "id is not valid", data: null });
 };
 const deleteAdminById = async (req, res) => {
   const adminId = req.params.id;
@@ -116,18 +184,25 @@ const deleteAdminById = async (req, res) => {
           data: null,
         });
       }
-      return res.status(200).send({  message: "success", error: null,data: deletedAdmin });
-    } catch (error) {
       return res
-      .status(500)
-      .send({ message: "failure", error: "internal server error", data: null });
+        .status(200)
+        .send({ message: "success", error: null, data: deletedAdmin });
+    } catch (error) {
+      return res.status(500).send({
+        message: "failure",
+        error: "internal server error",
+        data: null,
+      });
     }
   }
-  return res.status(400).send({ message: "failure", error: "id is not valid", data: null });
+  return res
+    .status(400)
+    .send({ message: "failure", error: "id is not valid", data: null });
 };
 
 module.exports = {
-  addAdmin,
+  adminSignUp,
+  adminSignIn,
   getAdmin,
   getAdminById,
   updateAdminById,

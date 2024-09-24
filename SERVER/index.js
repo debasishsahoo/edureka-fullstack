@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const studentRouter=require('./routes/student.route');
+const adminRouter=require('./routes/admin.route')
 
 //Create Server
 const app = express();
@@ -18,7 +19,7 @@ app.use(bodyParser.json());
 //For API health Checkup (http://localhost:5000/api/check)
 app.get("/api/check", (req, res) => res.send("App is Running"));
 app.use('/api/student',studentRouter)
-
+app.use('/api/admin',adminRouter)
 
 const PORT = process.env.PORT;
 const HOST = process.env.HOST;

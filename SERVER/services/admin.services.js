@@ -1,9 +1,10 @@
 const AdminTable = require("../models/admin.model");
 
 const insertData = async (adminPayload) => {
-  const insertAdminData = await AdminTable.create(adminPayload);
-  return insertAdminData;
+  const newAdmin = await AdminTable.create(adminPayload);
+  return newAdmin;
 };
+
 
 const getAllData = async () => {
   const allAdmin = await AdminTable.find().select(
@@ -19,28 +20,32 @@ const getDataById = async (adminId) => {
   return singleAdmin;
 };
 
+const getDataByEmail = async (email) => {
+  const singleAdmin = await AdminTable.findOne(email);
+  return singleAdmin;
+};
+
 const updateDataById = async (adminId, UpdatePayload) => {
-  const updateAdminData = await AdminTable.findByIdAndUpdate(
+  const updateAdmin = await AdminTable.findByIdAndUpdate(
     adminId,
     UpdatePayload,
     {
       new: true,
     }
   );
-  return updateAdminData;
+  return updateAdmin;
 };
 
 const deleteDataById = async (adminId) => {
-  const deleteAdminData = await AdminTable.findByIdAndDelete(adminId);
-  return deleteAdminData;
+  const deleteAdmin = await AdminTable.findByIdAndDelete(adminId);
+  return deleteAdmin;
 };
-
-const searchByParameter = async () => {};
 
 module.exports = {
   insertData,
   getAllData,
   getDataById,
+  getDataByEmail,
   updateDataById,
   deleteDataById,
 };
