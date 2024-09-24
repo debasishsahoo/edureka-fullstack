@@ -8,7 +8,7 @@ const StudentSchema=new mongoose.Schema({
     section:{
         type:String,default:"A"
     },
-});
+},{timestamps:true});
 
 
 //Model For Student Table
