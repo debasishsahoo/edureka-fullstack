@@ -5,11 +5,8 @@ const insertData = async (adminPayload) => {
   return newAdmin;
 };
 
-
 const getAllData = async () => {
-  const allAdmin = await AdminTable.find().select(
-    "_id name email isAdmin"
-  );
+  const allAdmin = await AdminTable.find().select("_id name email isAdmin");
   return allAdmin;
 };
 
@@ -21,7 +18,7 @@ const getDataById = async (adminId) => {
 };
 
 const getDataByEmail = async (email) => {
-  const singleAdmin = await AdminTable.findOne(email);
+  const singleAdmin = await AdminTable.findOne(email).select("-password");
   return singleAdmin;
 };
 
