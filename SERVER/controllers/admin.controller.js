@@ -53,6 +53,7 @@ const adminSignIn = async (req, res) => {
       error: "Bad Request",
     });
   }
+
   const oldAdmin = await adminServices.getDataByEmail({ email });
   if (!oldAdmin) {
     return res.status(404).send({
@@ -68,7 +69,9 @@ const adminSignIn = async (req, res) => {
         _id: oldAdmin._id,
         email: oldAdmin.email,
       };
-      const token = await tokenUtility(tokenPayload);
+
+
+      const token = await tokenUtility.generateToken(tokenPayload);
       const tokenOption = {
         httpOnly: true,
         secure: true,
@@ -88,9 +91,25 @@ const adminSignIn = async (req, res) => {
   }else{
     return res.status(401).send({ message: "failure", error: 'Unauthorized Access' });
   }
-
-  
 };
+
+const adminSignOut=async(req, res)=>{
+  try{
+    res.clearCookie("token")
+
+    return res.status(200).send({
+        message : "success",
+        error : null,
+        data : []
+    })
+}catch(error){
+    return res.status(500).send({
+        message: "failure",
+        error : error.message || error
+    })
+}
+}
+
 
 const getAdmin = async (req, res) => {
   try {
@@ -107,10 +126,10 @@ const getAdmin = async (req, res) => {
       error: null,
       data: allAdmin,
     });
-  } catch (err) {
+  } catch (error) {
     return res
       .status(500)
-      .send({ message: "failure", error: "Internal server error", data: [] });
+      .send({ message: "failure", error: error, data: [] });
   }
 };
 const getAdminById = async (req, res) => {
@@ -206,6 +225,7 @@ const deleteAdminById = async (req, res) => {
 module.exports = {
   adminSignUp,
   adminSignIn,
+  adminSignOut,
   getAdmin,
   getAdminById,
   updateAdminById,

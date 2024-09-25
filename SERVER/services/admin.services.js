@@ -8,7 +8,7 @@ const insertData = async (adminPayload) => {
 
 const getAllData = async () => {
   const allAdmin = await AdminTable.find().select(
-    "_id name email isAdmin  "
+    "_id name email isAdmin"
   );
   return allAdmin;
 };
