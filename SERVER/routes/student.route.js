@@ -4,7 +4,7 @@ const studentController =require('../controllers/student.controller')
 
 
 router.get('/',studentController.getStudent); //get All Student
-router.get('/:regId',studentController.getStudentById); //get Single Student by Id
+router.get('/:id',studentController.getStudentById); //get Single Student by Id
 router.post('/register',studentController.addStudent);// Insert Single new Student Data
 router.put('/update/:id',studentController.updateStudentById);  // Update Single old Student Data
 router.delete('/delete/:id',studentController.deleteStudentById);  // Delete Single Student Data

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const studentServices = require("../services/student.services");
-const StudentModel = require("../models/student/student.model");
 
 const addStudent = async (req, res) => {
   let {
@@ -66,7 +65,7 @@ const addStudent = async (req, res) => {
 
   console.log("Roll_No:", Roll_No);
 
-  const Registered_By = 'Admin';  //Need to Implement Later
+  const Registered_By = "Admin"; //Need to Implement Later
   const Student_Name = name.toUpperCase();
   console.log("Student_Name:", Student_Name);
 
@@ -109,17 +108,17 @@ const getStudent = async (req, res) => {
       error: null,
       data: allStudent,
     });
-  } catch (err) {
-    return res
-      .status(500)
-      .send({ message: "failure", error: "Internal server error", data: [] });
+  } catch (error) {
+    return res.status(500).send({ message: "failure", error: error, data: [] });
   }
 };
 const getStudentById = async (req, res) => {
   const studentId = req.params.id;
+  console.log('studentId:', studentId)
+
   if (mongoose.isValidObjectId(studentId)) {
     try {
-      const singleStudent = await studentServices.getDataById(studentId);
+      const singleStudent = await studentServices.getDataByRegId(studentId);
 
       if (!singleStudent) {
         return res.status(404).send({
@@ -134,7 +133,7 @@ const getStudentById = async (req, res) => {
     } catch (error) {
       return res
         .status(500)
-        .send({ message: "failure", error: "Internal server error", data: [] });
+        .send({ message: "failure", error: error, data: [] });
     }
   }
   return res
@@ -146,8 +145,20 @@ const updateStudentById = async (req, res) => {
   const studentId = req.params.id;
   if (mongoose.isValidObjectId(studentId)) {
     try {
-      const { name, course, section } = req.body;
-      const oldStudent = await studentServices.getDataById(studentId);
+      let {
+        name,
+        class_name,
+        roll,
+        address,
+        parent_name,
+        contact_no,
+        age,
+        gender,
+        image,
+        registration_fees,
+        previous_dues,
+      } = req.body;
+      const oldStudent = await studentServices.getDataByRegId(studentId);
       if (!oldStudent) {
         return res.status(400).send({
           message: "failure",
@@ -159,8 +170,16 @@ const updateStudentById = async (req, res) => {
         studentId,
         {
           name,
-          course,
-          section,
+          class_name,
+          roll,
+          address,
+          parent_name,
+          contact_no,
+          age,
+          gender,
+          image,
+          registration_fees,
+          previous_dues,
         }
       );
       return res
@@ -169,7 +188,7 @@ const updateStudentById = async (req, res) => {
     } catch (error) {
       return res.status(500).send({
         message: "failure",
-        error: "internal server error",
+        error: error,
         data: null,
       });
     }
@@ -197,7 +216,7 @@ const deleteStudentById = async (req, res) => {
     } catch (error) {
       return res.status(500).send({
         message: "failure",
-        error: "internal server error",
+        error:error,
         data: null,
       });
     }
