@@ -6,6 +6,7 @@ const StudentFeesSchema=mongoose.Schema({
     name:{type:String,require:true},
     class:{type:String,require:true},
     roll:{type:Number,require:true},
+    email:{type:Number,require:true},
     year:{type:String,require:true},
     monthly_name:{type:Number,require:true},
     monthly_fees:{type:Number,require:true},

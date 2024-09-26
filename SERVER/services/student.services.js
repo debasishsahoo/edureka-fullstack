@@ -6,25 +6,35 @@ const insertData = async (studentPayload) => {
   return insertStudentData;
 };
 const getAllData = async () => {
-  const allStudent = await StudentTable.find({}).select("-password");
+  const allStudent = await StudentTable.find({});
   return allStudent;
 };
 const getDataByRegId = async (regId) => {
-  const Student = await StudentTable.findById(regId).select("-password");
+  const Student = await StudentTable.findById(regId);
   return Student;
 };
 
-const getDataByClass = async (id) => {
-  const Students = await StudentTable.find({ class: id }).select("-password");
+const getDataByClass = async (className) => {
+  console.log('class_name:', className)
+  const Students = await StudentTable.find({ class_name: className});
   return Students;
 };
+
+const getDataByClassRollSortDesc = async (className) => {
+  console.log('class_name:', className)
+  const Student = await StudentTable.findOne({ class_name: className}).sort({roll:-1}).limit(1);
+  return Student;
+};
+
 const getDataByNameClassRoll = async (param) => {
-  const Students = await StudentTable.findOne({
+  //console.log('param:', param)
+
+  const Student = await StudentTable.findOne({
     name: param.name,
-    class: param.class,
+    class_name: param.class_name,
     roll: param.roll,
-  }).select("-password");
-  return Students;
+  });
+  return Student;
 };
 
 const updateDataById = async (studentId, UpdatePayload) => {
@@ -43,11 +53,11 @@ const deleteDataById = async (studentId) => {
 };
 
 
-const getDataByClassAttendance = async (className) => {
+const getDataByClassAttendance = async (param) => {
   const Students = await StudentAttendanceTable.findOne({
-    date: new date().format("YYYY-MM-DD"),
-    class: className,
-  }).select("-password");
+    date: param.date,
+    class_name: param.class_name,
+  });
   return Students;
 };
 
@@ -64,13 +74,43 @@ const updateDataByClassAttendance = async (attendanceId, UpdatePayload) => {
   return newAttendance;
 };
 
+const addDataByFees=async(payload)=>{
+  const  newFees=await StudentFeesTable.create(payload);
+  return newFees;
+}
+
+const getAllDataByFees=async()=>{
+  const  totalFees=await StudentFeesTable.find({});
+  return totalFees;
+}
+
+
+const getDataByFees=async(param)=>{
+  const  Fees=await StudentFeesTable.findOne({
+    name:param.name,
+    class_name:param.class_name,
+    roll:param.roll
+  });
+  return Fees;
+}
+
+
+
 module.exports = {
   insertData,
   getAllData,
   getDataByRegId,
   getDataByClass,
-  getDataByClassAttendance,
+  getDataByClassRollSortDesc,
   getDataByNameClassRoll,
   updateDataById,
   deleteDataById,
+
+  addDataByClassAttendance,
+  getDataByClassAttendance,
+  updateDataByClassAttendance,
+
+  addDataByFees,
+  getAllDataByFees,
+  getDataByFees
 };

@@ -1,29 +1,99 @@
 const mongoose = require("mongoose");
 const studentServices = require("../services/student.services");
+const StudentModel = require("../models/student/student.model");
 
 const addStudent = async (req, res) => {
-  const { regId, name, course, section } = req.body;
+  let {
+    name,
+    class_name,
+    roll,
+    address,
+    parent_name,
+    contact_no,
+    age,
+    gender,
+    image,
+    registration_fees,
+    previous_dues,
+  } = req.body;
+
+  //console.log("req.body:", req.body);
+
+  if (
+    !name ||
+    !class_name ||
+    !address ||
+    !parent_name ||
+    !contact_no ||
+    !age ||
+    !gender ||
+    !registration_fees
+  ) {
+    return res.status(400).send({
+      message: "Please Provide All Data",
+      error: "Bad Request",
+    });
+  }
+
+  const oldStudent = await studentServices.getDataByNameClassRoll({
+    name: name,
+    class_name: class_name,
+    roll: roll,
+  });
+
+  //console.log("oldStudent:", oldStudent);
+
+  if (oldStudent) {
+    return res.status(409).send({
+      message: "Student Already Exits",
+      error: "Conflict",
+    });
+  }
+
+  const studentInfo =
+    (await studentServices.getDataByClass(class_name)) &&
+    (await studentServices.getDataByClassRollSortDesc(class_name));
+
+  console.log("studentInfo:", studentInfo);
+
+  let Roll_No;
+
+  if (studentInfo) {
+    Roll_No = studentInfo.roll + 1;
+  } else {
+    Roll_No = 1;
+  }
+
+  console.log("Roll_No:", Roll_No);
+
+  const Registered_By = 'Admin';  //Need to Implement Later
+  const Student_Name = name.toUpperCase();
+  console.log("Student_Name:", Student_Name);
+
   try {
     const newStudent = await studentServices.insertData({
-      regId,
-      name,
-      course,
-      section,
+      registered_by: Registered_By,
+      name: Student_Name,
+      class_name,
+      roll: Roll_No,
+      address,
+      parent_name,
+      contact_no,
+      age,
+      gender,
+      image,
+      registration_fees,
+      previous_dues,
     });
+
     return res
-      .status(200)
+      .status(201)
       .send({ message: "success", error: null, data: newStudent });
   } catch (error) {
-    if (error.keyValue.title === title) {
-      return res
-        .status(400)
-        .send({ message: "failure", error: "duplicate title" });
-    }
-    return res
-      .status(500)
-      .send({ message: "failure", error: "Internal server error" });
+    return res.status(400).send({ message: "failure", error: error });
   }
 };
+
 const getStudent = async (req, res) => {
   try {
     const allStudent = await studentServices.getAllData();
@@ -93,14 +163,20 @@ const updateStudentById = async (req, res) => {
           section,
         }
       );
-      return res.status(200).send({  message: "success", error: null,data: updatedOldStudent });
-    } catch (error) {
       return res
-        .status(500)
-        .send({ message: "failure", error: "internal server error", data: null });
+        .status(200)
+        .send({ message: "success", error: null, data: updatedOldStudent });
+    } catch (error) {
+      return res.status(500).send({
+        message: "failure",
+        error: "internal server error",
+        data: null,
+      });
     }
   }
-  return res.status(400).send({ message: "failure", error: "id is not valid", data: null });
+  return res
+    .status(400)
+    .send({ message: "failure", error: "id is not valid", data: null });
 };
 const deleteStudentById = async (req, res) => {
   const studentId = req.params.id;
@@ -115,14 +191,20 @@ const deleteStudentById = async (req, res) => {
           data: null,
         });
       }
-      return res.status(200).send({  message: "success", error: null,data: deletedStudent });
-    } catch (error) {
       return res
-      .status(500)
-      .send({ message: "failure", error: "internal server error", data: null });
+        .status(200)
+        .send({ message: "success", error: null, data: deletedStudent });
+    } catch (error) {
+      return res.status(500).send({
+        message: "failure",
+        error: "internal server error",
+        data: null,
+      });
     }
   }
-  return res.status(400).send({ message: "failure", error: "id is not valid", data: null });
+  return res
+    .status(400)
+    .send({ message: "failure", error: "id is not valid", data: null });
 };
 
 module.exports = {

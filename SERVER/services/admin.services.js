@@ -18,7 +18,7 @@ const getDataById = async (adminId) => {
 };
 
 const getDataByEmail = async (email) => {
-  const singleAdmin = await AdminTable.findOne(email).select("-password");
+  const singleAdmin = await AdminTable.findOne(email);
   return singleAdmin;
 };
 

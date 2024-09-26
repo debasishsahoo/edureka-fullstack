@@ -55,6 +55,7 @@ const adminSignIn = async (req, res) => {
   }
 
   const oldAdmin = await adminServices.getDataByEmail({ email });
+  console.log('oldAdmin:', oldAdmin)
   if (!oldAdmin) {
     return res.status(404).send({
       message: "User Not Found",
