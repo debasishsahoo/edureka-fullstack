@@ -15,9 +15,11 @@ const getDataByRegId = async (regId) => {
 };
 
 const getDataByClass = async (className) => {
-  console.log('class_name:', className)
-  const Students = await StudentTable.find({ class_name: className});
+  const payload={ class_name: className}
+  const Students = await StudentTable.find(payload);
+  console.log('Students:', Students)
   return Students;
+
 };
 
 const getDataByClassRollSortDesc = async (className) => {

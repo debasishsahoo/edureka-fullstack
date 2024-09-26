@@ -10,7 +10,7 @@ router.put('/update/:id',studentController.updateStudentById);  // Update Single
 router.delete('/delete/:id',studentController.deleteStudentById);  // Delete Single Student Data
 
 
-router.get('/class/:id',()=>{});
+router.get('/class/:id',studentController.getStudentByClass);
 router.get('/class/:id/attendance',()=>{});
 router.get('/search/:name/:class/:roll',()=>{});
 

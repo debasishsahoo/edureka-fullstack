@@ -92,7 +92,6 @@ const addStudent = async (req, res) => {
     return res.status(400).send({ message: "failure", error: error });
   }
 };
-
 const getStudent = async (req, res) => {
   try {
     const allStudent = await studentServices.getAllData();
@@ -140,6 +139,36 @@ const getStudentById = async (req, res) => {
     .status(400)
     .send({ message: "failure", error: "id is not valid", data: null });
 };
+
+const getStudentByClass = async (req, res) => {
+  const className = req.params.id;
+  if (className) {
+    try {
+      const students = await studentServices.getDataByClass(className);
+
+      if (students.length<0) {
+        return res.status(404).send({
+          message: "No Student found",
+          error: null,
+          data: [],
+        });
+      }
+      return res
+        .status(200)
+        .send({ message: "success", error: null, data: students });
+    } catch (error) {
+      return res
+        .status(500)
+        .send({ message: "failure", error: error, data: [] });
+    }
+  }
+  return res
+    .status(400)
+    .send({ message: "failure", error: "Please Provide Class Name", data: null });
+};
+
+
+
 
 const updateStudentById = async (req, res) => {
   const studentId = req.params.id;
@@ -226,10 +255,14 @@ const deleteStudentById = async (req, res) => {
     .send({ message: "failure", error: "id is not valid", data: null });
 };
 
+
+
+
 module.exports = {
   addStudent,
   getStudent,
   getStudentById,
+  getStudentByClass,
   updateStudentById,
   deleteStudentById,
 };
