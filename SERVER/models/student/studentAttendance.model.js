@@ -8,7 +8,6 @@ const StudentAttendanceSchema=mongoose.Schema({
   students:[
     {
         name:{type:String,require:true},
-        class:{type:String,require:true},
         roll:{type:Number,require:true},
         is_present:{type:Boolean,require:true,default:false},
     }
