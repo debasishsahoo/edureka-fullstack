@@ -1,12 +1,12 @@
-import './App.css';
-import Main from './Components/pages/Main'
+import "./App.css";
+import Main from "./Components/main";
 
 function App() {
   return (
-  <>
-    <Main/>
-  </>
-);
+    <>
+      <Main />
+    </>
+  );
 }
 
 export default App;
