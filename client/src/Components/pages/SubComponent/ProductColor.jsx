@@ -1,14 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const ProductColor = () => {
+const ProductColor = (props) => {
+  const ProductColor = props.color.map((element) => (
+    <li className={element}></li>
+  ));
   return (
     <ul>
-    <li>COLOR</li>
-    <li className="yellow"></li>
-    <li className="black"></li>
-    <li className="blue"></li>
-  </ul>
-  )
-}
+      <li>COLOR</li>
+      {ProductColor}
+    </ul>
+  );
+};
 
-export default ProductColor
+export default ProductColor;

@@ -9,10 +9,10 @@ const RightComponent = () => {
   return (
     <div className="right">
       <div className="product-info">
-        <ProductName />
-        <ProductDetails />
-        <ProductSize />
-        <ProductColor />
+        <ProductName name='AirMax-2' icons={['fa fa-search','fa fa-user','fa fa-shopping-cart']}/>
+        <ProductDetails head1='Summer Collection' head2='Men Black Sneakers'/>
+        <ProductSize size={[7,8,9,10,11]}/>
+        <ProductColor color={['yellow','black','blue']} />
         <ProductButton />
       </div>
     </div>

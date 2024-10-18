@@ -1,14 +1,13 @@
 import React from 'react'
 
-const ProductSize = () => {
+const ProductSize = (props) => {
+
+  const ProductSize=props.size.map(element=><li className="bg">{element}</li>)
+
   return (
     <ul>
     <li>SIZE</li>
-    <li className="bg">7</li>
-    <li className="bg">8</li>
-    <li className="bg">9</li>
-    <li className="bg">10</li>
-    <li className="bg">11</li>
+    {ProductSize}
   </ul>
   )
 }

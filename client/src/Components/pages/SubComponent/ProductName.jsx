@@ -1,12 +1,12 @@
 import React from "react";
 
-const ProductName = () => {
+const ProductName = (props) => {
+  const faIcons = props.icons.map((element) => <i className={element}></i>);
+
   return (
     <div className="product-name">
-      <h1>Airmax</h1>
-      <i className="fa fa-search"></i>
-      <i className="fa fa-user"></i>
-      <i className="fa fa-shopping-cart"></i>
+      <h1>{props.name}</h1>
+      {faIcons}
     </div>
   );
 };

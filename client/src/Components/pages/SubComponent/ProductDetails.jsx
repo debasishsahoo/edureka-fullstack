@@ -1,10 +1,10 @@
 import React from "react";
 
-const ProductDetails = () => {
+const ProductDetails = (props) => {
   return (
     <div className="details">
-      <h3>Winter Collection</h3>
-      <h2>Men Black Sneakers</h2>
+      <h3>{props.head1}</h3>
+      <h2>{props.head2}</h2>
       <h4>
         <span className="fas fa-dollar"></span>150
       </h4>
