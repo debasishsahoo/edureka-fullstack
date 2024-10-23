@@ -8,7 +8,22 @@ const SectionRecipes = () => {
       </h1>
       <div className="recipe-section">
         <Recipe
-          image="../assets/images/dish-1.jpg"
+          image="/src/assets/images/dish-1.jpg"
+          title="Strawberry Custard"
+          info="Lorem ipsum dolor, sit amet consectetur adipisicing elit."
+        />
+         <Recipe
+          image="/src/assets/images/dish-1.jpg"
+          title="Strawberry Custard"
+          info="Lorem ipsum dolor, sit amet consectetur adipisicing elit."
+        />
+         <Recipe
+          image="/src/assets/images/dish-1.jpg"
+          title="Strawberry Custard"
+          info="Lorem ipsum dolor, sit amet consectetur adipisicing elit."
+        />
+         <Recipe
+          image="/src/assets/images/dish-1.jpg"
           title="Strawberry Custard"
           info="Lorem ipsum dolor, sit amet consectetur adipisicing elit."
         />

@@ -45,7 +45,7 @@ nav ul li {
 .hero {
     width: 100%;
     height: auto;
-    background: url(images/heo-image.jpg);
+    background: url(../images/heo-image.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
