@@ -1,11 +1,17 @@
+import Header from './Components/pages/Header'
+import Footer from './Components/pages/Footer'
+import SectionHero from './Components/pages/SectionHero'
+import SectionRecipes from './Components/pages/SectionRecipes'
 
-import './App.css'
 
 function App() {
  
   return (
     <>
-     
+     <Header/>
+     <SectionHero/>
+     <SectionRecipes/>
+     <Footer/>
     </>
   )
 }
