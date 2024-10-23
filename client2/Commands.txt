@@ -1,0 +1,24 @@
+npm create vite@latest client2 --template
+
+
+
+Need to install the following packages:
+create-vite@5.5.4
+Ok to proceed? (y) y
+
+
+> npx
+> create-vite client2
+
+√ Select a framework: » React
+√ Select a variant: » JavaScript
+
+Scaffolding project in D:\Devlopment\GFK\edureka-fullstack\client2...
+
+Done. Now run:
+
+  cd client2
+  npm install
+  npm run dev
+
+
