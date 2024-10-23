@@ -10,21 +10,23 @@ const getAllData = async () => {
   return allAdmin;
 };
 
-const getDataById = async (adminId) => {
-  const singleAdmin = await AdminTable.findById(adminId).select(
+const getDataById = async (id) => {
+  const singleAdmin = await AdminTable.findById(id).select(
     "_id name email isAdmin"
   );
   return singleAdmin;
 };
 
-const getDataByEmail = async (email) => {
-  const singleAdmin = await AdminTable.findOne(email);
+const getDataByQuery = async (query) => {
+  const singleAdmin = await AdminTable.findOne(query).select(
+    "_id name email isAdmin"
+  );
   return singleAdmin;
 };
 
-const updateDataById = async (adminId, UpdatePayload) => {
+const updateDataById = async (id, UpdatePayload) => {
   const updateAdmin = await AdminTable.findByIdAndUpdate(
-    adminId,
+    id,
     UpdatePayload,
     {
       new: true,
@@ -33,8 +35,8 @@ const updateDataById = async (adminId, UpdatePayload) => {
   return updateAdmin;
 };
 
-const deleteDataById = async (adminId) => {
-  const deleteAdmin = await AdminTable.findByIdAndDelete(adminId);
+const deleteDataById = async (id) => {
+  const deleteAdmin = await AdminTable.findByIdAndDelete(id);
   return deleteAdmin;
 };
 
@@ -42,7 +44,7 @@ module.exports = {
   insertData,
   getAllData,
   getDataById,
-  getDataByEmail,
+  getDataByQuery,
   updateDataById,
   deleteDataById,
 };

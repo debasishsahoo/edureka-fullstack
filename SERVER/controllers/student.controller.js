@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const studentServices = require("../services/student.services");
-
 const addStudent = async (req, res) => {
   let {
     name,
@@ -112,12 +111,11 @@ const getStudent = async (req, res) => {
   }
 };
 const getStudentById = async (req, res) => {
-  const studentId = req.params.id;
-  console.log("studentId:", studentId);
+  const student_id = req.params.id;
 
-  if (mongoose.isValidObjectId(studentId)) {
+  if (mongoose.isValidObjectId(student_id)) {
     try {
-      const singleStudent = await studentServices.getDataByRegId(studentId);
+      const singleStudent = await studentServices.getDataById(student_id);
 
       if (!singleStudent) {
         return res.status(404).send({
@@ -139,7 +137,6 @@ const getStudentById = async (req, res) => {
     .status(400)
     .send({ message: "failure", error: "id is not valid", data: null });
 };
-
 const updateStudentById = async (req, res) => {
   const studentId = req.params.id;
   if (mongoose.isValidObjectId(studentId)) {
@@ -224,12 +221,11 @@ const deleteStudentById = async (req, res) => {
     .status(400)
     .send({ message: "failure", error: "id is not valid", data: null });
 };
-
 const getStudentByClass = async (req, res) => {
   const className = req.params.id;
   if (className) {
     try {
-      const students = await studentServices.getDataByClass(className);
+      const students = await studentServices.getDataByQuery({class_name:className});
 
       if (students.length < 0) {
         return res.status(404).send({
@@ -255,16 +251,14 @@ const getStudentByClass = async (req, res) => {
       data: null,
     });
 };
-
 const getStudentClassAttendance = async (req, res) => {
   
 };
-
 const setStudentAttendance = async (res, res) => {
   const { students } = req.body;
   console.log("req.body:", req.body);
-  const class_teacher = "Teacher";
-  const clsnm = req.param.class_name;
+  const classTeacher = "Teacher";
+  const className = req.param.class_name;
 
   const Old_Attendance = await studentServices.getDataByClassAttendance({
     date: date,

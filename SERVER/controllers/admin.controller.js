@@ -12,7 +12,7 @@ const adminSignUp = async (req, res) => {
       error: "Bad Request",
     });
   }
-  const oldAdmin = await adminServices.getDataByEmail({ email });
+  const oldAdmin = await adminServices.getDataByQuery({ email:email });
   if (oldAdmin) {
     return res.status(409).send({
       message: "User Already Exits",
@@ -54,7 +54,7 @@ const adminSignIn = async (req, res) => {
     });
   }
 
-  const oldAdmin = await adminServices.getDataByEmail({ email });
+  const oldAdmin = await adminServices.getDataByQuery({ email:email });
   console.log('oldAdmin:', oldAdmin)
   if (!oldAdmin) {
     return res.status(404).send({

@@ -1,36 +1,34 @@
 const StudentTable = require("../models/student/student.model");
 const StudentAttendanceTable = require("../models/student/studentAttendance.model");
 const StudentFeesTable = require("../models/student/studentFees.model");
+
 const insertData = async (studentPayload) => {
   const insertStudentData = await StudentTable.create(studentPayload);
   return insertStudentData;
 };
+
 const getAllData = async () => {
-  const allStudent = await StudentTable.find({});
-  return allStudent;
-};
-const getDataByRegId = async (regId) => {
-  const Student = await StudentTable.findById(regId);
-  return Student;
+  const allStudents = await StudentTable.find({});
+  return allStudents;
 };
 
-const getDataByClass = async (className) => {
-  const payload={ class_name: className}
+const getDataById = async (id) => {
+  const singleStudent = await StudentTable.findById(id);
+  return singleStudent;
+};
+
+const getDataByQuery = async (payload) => {
   const Students = await StudentTable.find(payload);
-  console.log('Students:', Students)
   return Students;
 
 };
 
-const getDataByClassRollSortDesc = async (className) => {
-  console.log('class_name:', className)
-  const Student = await StudentTable.findOne({ class_name: className}).sort({roll:-1}).limit(1);
+const getDataByClassRollSortDesc = async (payload) => {
+  const Student = await StudentTable.findOne(payload).sort({roll:-1}).limit(1);
   return Student;
 };
 
 const getDataByNameClassRoll = async (param) => {
-  //console.log('param:', param)
-
   const Student = await StudentTable.findOne({
     name: param.name,
     class_name: param.class_name,
@@ -49,11 +47,11 @@ const updateDataById = async (studentId, UpdatePayload) => {
   );
   return updateStudentData;
 };
+
 const deleteDataById = async (studentId) => {
   const deleteStudentData = await StudentTable.findByIdAndDelete(studentId);
   return deleteStudentData;
 };
-
 
 const getDataByClassAttendance = async (param) => {
   const Students = await StudentAttendanceTable.findOne({
@@ -79,13 +77,12 @@ const updateDataByClassAttendance = async (attendanceId, UpdatePayload) => {
 const addDataByFees=async(payload)=>{
   const  newFees=await StudentFeesTable.create(payload);
   return newFees;
-}
+};
 
 const getAllDataByFees=async()=>{
   const  totalFees=await StudentFeesTable.find({});
   return totalFees;
-}
-
+};
 
 const getDataByFees=async(param)=>{
   const  Fees=await StudentFeesTable.findOne({
@@ -94,15 +91,15 @@ const getDataByFees=async(param)=>{
     roll:param.roll
   });
   return Fees;
-}
+};
 
 
 
 module.exports = {
   insertData,
   getAllData,
-  getDataByRegId,
-  getDataByClass,
+  getDataById,
+  getDataByQuery,
   getDataByClassRollSortDesc,
   getDataByNameClassRoll,
   updateDataById,
