@@ -5,6 +5,7 @@ import ValueProps from "./AllProps/ValueProps";
 import PropsPass from "./AllProps/PropsPass";
 import OptionalProps from "./AllProps/OptionalProps";
 import PropsSpread from "./AllProps/PropsSpread";
+import ParentComponent from "./AllProps/ParentComponent";
 const ComponentPropsMain = () => {
   const name = "Debasish";
   const age = 36;
@@ -33,10 +34,18 @@ const ComponentPropsMain = () => {
       <br />
       <OptionalProps />
       <br />
-      <PropsSpread a={arr.a} b={arr.b}/>
+      <PropsSpread a={arr.a} b={arr.b} />
       <br />
-      <PropsSpread {...arr}/>
-
+      <PropsSpread {...arr} />
+      <br />
+      <ParentComponent>
+        <span>
+          Hi i'm Child
+        </span>
+        <div>
+          <h1> This Child Component</h1>
+        </div>
+      </ParentComponent>
     </div>
   );
 };
