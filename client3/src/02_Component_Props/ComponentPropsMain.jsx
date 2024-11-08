@@ -6,7 +6,8 @@ import React from "react";
 // import OptionalProps from "./AllProps/OptionalProps";
 // import PropsSpread from "./AllProps/PropsSpread";
 // import ParentComponent from "./AllProps/ParentComponent";
-import Percentage from './AllProps/InValidProps'
+//import Percentage from './AllProps/InValidProps'
+import PropsValidator from './AllProps/PropsValidator'
 const ComponentPropsMain = () => {
   // const name = "Debasish";
   // const age = 36;
@@ -51,7 +52,16 @@ const ComponentPropsMain = () => {
     <div>
       {/* <Percentage label="Calculation 1" total={0} score={230}/> */}
       {/* <Percentage  total={100} score={96}/> */}
-      <Percentage label="Calculation 2" score='a'/>
+      {/* <Percentage label="Calculation 2" score='a'/> */}
+      <PropsValidator
+      anyValue='This is Any Value'
+      propObj={{ name:'Saheli'}}
+      propArray={[1,2,3,4,5]}
+      propBool={true}
+      propFunc={function(x){return x+5}}
+      propNumber={1}
+      propString='Srabani Roy'
+      />
     </div>
   );
 };

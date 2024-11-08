@@ -27,7 +27,7 @@ function isNonZero(value) {
 
 function ValidationType(...validators) {
   return function (props, propsName, componentName) {
-    const value = props[propsName];
+    const value = props[propsName];    //props['label']  props['score'] 
 
     const Valid = validators.every((validator) => {
       if (typeof validator === "function") {
@@ -39,8 +39,8 @@ function ValidationType(...validators) {
 
     if (!Valid) {
       return new Error(
-        `Invalid props\`${propsName}\`
-        passed to \`${componentName}\`
+        `Invalid props\`${propsName}\` form \`${props}\` is
+        passed to \`${componentName}\` component and the
         Validation Failed.Please Fix this First`
       );
     }
@@ -52,7 +52,6 @@ Percentage.propTypes={
   label:propTypes.string.isRequired,
   score:ValidationType(isNumeric),
   total:ValidationType(isNumeric,isNonZero),
-
 }
 
 
