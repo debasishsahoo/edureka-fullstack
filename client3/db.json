@@ -1,0 +1,44 @@
+{
+  "list": [
+    {
+      "id": 1,
+      "Item": "RICE"
+    },
+    {
+      "id": 2,
+      "Item": "BREAD"
+    },
+    {
+      "id": 3,
+      "Item": "COKE"
+    },
+    {
+      "id": 4,
+      "Item": "JAM"
+    },
+    {
+      "id": 5,
+      "Item": "LEMON"
+    },
+    {
+      "id": 6,
+      "Item": "BUTTER"
+    },
+    {
+      "id": 7,
+      "Item": "PEANUT"
+    },
+    {
+      "id": 8,
+      "Item": "ALMONDS"
+    },
+    {
+      "id": 9,
+      "Item": "CASHEW"
+    },
+    {
+      "id": 10,
+      "Item": "Biscuit"
+    }
+  ]
+}
