@@ -3,9 +3,10 @@ import React from "react";
 //import UserInput from './01_useStates/Hookes2'
 //import Student from './01_useStates/Hookes3'
 
-import Count from "./02_useEffect/components/Count";
-import Calculator from "./02_useEffect/components/Calculator";
-import Dual from "./02_useEffect/components/Dual";
+//import Count from "./02_useEffect/components/Count";
+//import Calculator from "./02_useEffect/components/Calculator";
+//import Dual from "./02_useEffect/components/Dual";
+import DataHooks from './02_useEffect/components/DataHooks'
 const ComponentHooksMain = () => {
   return (
     <>
@@ -14,11 +15,12 @@ const ComponentHooksMain = () => {
       {/* <UserInput/> */}
       {/* <Student/> */}
 
-      <Count />
+      {/* <Count /> */}
       <br />
-      <Calculator />
+      {/* <Calculator /> */}
       <br />
-      <Dual />
+      {/* <Dual /> */}
+      <DataHooks/>
     </>
   );
 };
