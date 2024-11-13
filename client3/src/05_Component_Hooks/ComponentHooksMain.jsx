@@ -6,7 +6,9 @@ import React from "react";
 //import Count from "./02_useEffect/components/Count";
 //import Calculator from "./02_useEffect/components/Calculator";
 //import Dual from "./02_useEffect/components/Dual";
-import DataHooks from './02_useEffect/components/DataHooks'
+//import DataHooks from './02_useEffect/components/DataHooks'
+//import GitComponent from "./02_useEffect/components/GitComponent";
+import UseContextMain from "./03_useContext/UseContextMain";
 const ComponentHooksMain = () => {
   return (
     <>
@@ -20,7 +22,10 @@ const ComponentHooksMain = () => {
       {/* <Calculator /> */}
       <br />
       {/* <Dual /> */}
-      <DataHooks/>
+      {/* <DataHooks/> */}
+
+      {/* <GitComponent /> */}
+      <UseContextMain />
     </>
   );
 };
