@@ -8,7 +8,8 @@ import React from "react";
 //import Dual from "./02_useEffect/components/Dual";
 //import DataHooks from './02_useEffect/components/DataHooks'
 //import GitComponent from "./02_useEffect/components/GitComponent";
-import UseContextMain from "./03_useContext/UseContextMain";
+//import UseContextMain from "./03_useContext/UseContextMain";
+import UseRefMain from '../05_Component_Hooks/04_useRef/UseRefMain'
 const ComponentHooksMain = () => {
   return (
     <>
@@ -25,7 +26,8 @@ const ComponentHooksMain = () => {
       {/* <DataHooks/> */}
 
       {/* <GitComponent /> */}
-      <UseContextMain />
+      {/* <UseContextMain /> */}
+      <UseRefMain/>
     </>
   );
 };
