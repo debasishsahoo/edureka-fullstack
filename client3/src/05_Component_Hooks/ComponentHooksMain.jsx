@@ -11,7 +11,8 @@ import React from "react";
 //import UseContextMain from "./03_useContext/UseContextMain";
 //import UseRefMain from "../05_Component_Hooks/04_useRef/UseRefMain";
 //import AllReducerMain from "./05_useReducer/AllReducerMain";
-import AllCallBackMain from './06_useCallBack/AllCallBackMain'
+//import AllCallBackMain from './06_useCallBack/AllCallBackMain'
+import AllMemoMain from './07_useMemo/AllMemoMain'
 const ComponentHooksMain = () => {
   return (
     <>
@@ -31,7 +32,8 @@ const ComponentHooksMain = () => {
       {/* <UseContextMain /> */}
       {/* <UseRefMain/> */}
       {/* <AllReducerMain /> */}
-      <AllCallBackMain/>
+      {/* <AllCallBackMain/> */}
+      <AllMemoMain/>
     </>
   );
 };
