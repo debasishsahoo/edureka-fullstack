@@ -9,8 +9,9 @@ import React from "react";
 //import DataHooks from './02_useEffect/components/DataHooks'
 //import GitComponent from "./02_useEffect/components/GitComponent";
 //import UseContextMain from "./03_useContext/UseContextMain";
-import UseRefMain from "../05_Component_Hooks/04_useRef/UseRefMain";
-import AllReducerMain from "./05_useReducer/AllReducerMain";
+//import UseRefMain from "../05_Component_Hooks/04_useRef/UseRefMain";
+//import AllReducerMain from "./05_useReducer/AllReducerMain";
+import AllCallBackMain from './06_useCallBack/AllCallBackMain'
 const ComponentHooksMain = () => {
   return (
     <>
@@ -29,7 +30,8 @@ const ComponentHooksMain = () => {
       {/* <GitComponent /> */}
       {/* <UseContextMain /> */}
       {/* <UseRefMain/> */}
-      <AllReducerMain />
+      {/* <AllReducerMain /> */}
+      <AllCallBackMain/>
     </>
   );
 };
