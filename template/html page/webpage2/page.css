@@ -1,0 +1,72 @@
+*{
+margin:0;
+padding: 0;
+font-family: sans-serif;
+}
+.header {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(images/sea.jpg);
+    background-position: center;
+    background-size: cover ;
+    color: aliceblue;
+    overflow-x: hidden;
+    position: relative;
+}
+nav{
+   display: flex;
+   padding:20px 100px ;
+   align-items: center; 
+   }
+nav img{
+width: 100px;
+
+}
+nav ul{
+text-align: right;
+display: inline;
+list-style: none;
+flex: 1;
+}
+nav ul li{
+    display: inline-block;
+    margin: 0 20px;
+}
+.main-text{
+    margin: 15% auto;
+    text-align: center;
+    }
+    .main-text h1{
+      font-size: 50px;  
+    }
+    .main-text .button{
+        text-decoration: none;
+        display: block;
+        width: 140px;
+        height: 35px;
+        margin: 25px auto;
+        color: white;
+        line-height: 35px;
+        border: 1px solid white;
+        
+    }
+    .button:hover{
+        background: white;
+        color: black;
+        transition: 0.5s;
+    }
+    .bottom-img{
+        height: 150px;
+        position: absolute;
+        bottom: 0;
+        opacity: 0.2;
+        animation: animate 8s linear infinite;
+    }
+    @keyframes animate{
+        0%{
+            left: 0;
+        }
+        100%{
+            left: -1900px;
+        }
+    }

@@ -12,7 +12,9 @@ import React from "react";
 //import UseRefMain from "../05_Component_Hooks/04_useRef/UseRefMain";
 //import AllReducerMain from "./05_useReducer/AllReducerMain";
 //import AllCallBackMain from './06_useCallBack/AllCallBackMain'
-import AllMemoMain from './07_useMemo/AllMemoMain'
+//import AllMemoMain from './07_useMemo/AllMemoMain'
+import RegularHooks from './08_CustomHooks/RegularHooks'
+import CustomHooks from './08_CustomHooks/index'
 const ComponentHooksMain = () => {
   return (
     <>
@@ -33,7 +35,11 @@ const ComponentHooksMain = () => {
       {/* <UseRefMain/> */}
       {/* <AllReducerMain /> */}
       {/* <AllCallBackMain/> */}
-      <AllMemoMain/>
+      {/* <AllMemoMain/> */}
+
+      {/* <RegularHooks/> */}
+      <CustomHooks/>
+
     </>
   );
 };
