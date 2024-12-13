@@ -12,19 +12,28 @@ db.sales.insertMany([
 ]);
 
 db.sales.aggregate([{
-    $group:{
-        _id:'$item',
-        averageQty:{$avg:'$quantity'}
+    $group: {
+        _id: '$item',
+        averageQty: { $avg: '$quantity' }
     }
 }])
 
 db.sales.aggregate([{
-    $group:{
-        _id:'$item',
-        averageAmount:{$avg:{$multiply: ["$quantity",'$price' ]}}
+    $group: {
+        _id: '$item',
+        averageAmount: { $avg: { $multiply: ["$quantity", '$price'] } }
     }
 }])
 
+db.sales.aggregate([{
+    $group: {
+        _id: '$item',
+        averageAmount: { $avg: { $multiply: ["$quantity", '$price'] } }
+    }
+},
+{$match:{averageAmount:{$gt:150}}},
+{$sort:{averageAmount:1}}
+])
 
 
 
@@ -32,6 +41,6 @@ db.sales.aggregate([{
 
 
 db.sales.find({})
-   .projection({})
-   .sort({})
-   .limit(0)
+    .projection({})
+    .sort({})
+    .limit(0)
