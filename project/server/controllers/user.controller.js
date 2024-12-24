@@ -31,7 +31,7 @@ const userController = {
       });
     }
   },
- //POST http://127.0.0.1:5000/api/user/signin
+  //POST http://127.0.0.1:5000/api/user/signin
   signIn: async (req, res) => {
     const { email, password } = req.body;
 
@@ -71,8 +71,39 @@ const userController = {
       });
     }
   },
+  //PUT http://127.0.0.1:5000/api/user/change-password
+  changePassword: async (req, res) => {
+    const { oldPassword, newPassword } = req.body;
 
-  changePassword: async () => {},
+    if (!oldPassword || !newPassword) {
+      return res.status(404).json({
+        message: "Please Provide All the Data",
+      });
+    }
+
+    try {
+      const existing_user = await user.findById(req.user.id);
+      if (!user) {
+        return res.status(400).json({ message: "user is not exist" });
+      }
+
+      const isMatch = await bcrypt.compare(oldPassword, existing_user.password);
+
+      if (!isMatch) {
+        return res.status(400).json({
+          message: "Old Password Not Matched....",
+        });
+      }
+
+      existing_user.password = await bcrypt.hash(newPassword, 10);
+      await existing_user.save();
+      res.status(200).json({ message: "Password Updated.." });
+    } catch (error) {
+      res.status(500).json({
+        error: error.message,
+      });
+    }
+  },
   getUser: async () => {},
   updateUser: async () => {},
 };
