@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const connectDB=require('./configs/db.connect.mongo')
 const userRoutes=require('./routes/user.route')
 const productRoutes=require('./routes/product.route')
@@ -7,6 +9,9 @@ require("dotenv").config();
 
 
 const app = express();
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 connectDB();
 
 app.use("/check", (req, res) => {
