@@ -1,0 +1,15 @@
+# How to Established a SERVER in NODE js?
+npm init -y
+packet.json is for hold all backend project details or info
+
+# package need for backend
+
+express:-  to create server APP       ( npm i express)
+mongoose:- for connect with mongodb and create schema ( npm i mongoose)
+body-parser: to parse JSON 
+dotenv : to store credential 
+cors:-
+bcryptjs:-
+jsonwebtoken:-
+
+nodemon :- npm i nodemon --save-dev
