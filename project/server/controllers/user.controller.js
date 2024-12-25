@@ -83,6 +83,7 @@ const userController = {
 
     try {
       const existing_user = await user.findById(req.user.id);
+      //console.log('existing_user:', existing_user)
       if (!user) {
         return res.status(400).json({ message: "user is not exist" });
       }
@@ -104,8 +105,17 @@ const userController = {
       });
     }
   },
-  getUser: async () => {},
-  updateUser: async () => {},
+  //PUT http://127.0.0.1:5000/api/user/change-password
+  getUser: async (req, res) => {
+    try {
+      const existing_user = await user.findById(req.user.id).select('-password');
+      if(existing_user)return res.status(200).json(existing_user);
+    } catch (error) {
+      return res.status(500).json({
+        error: error.message,
+      });
+    }
+  }
 };
 
 module.exports = userController;
