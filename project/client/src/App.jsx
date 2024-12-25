@@ -1,7 +1,6 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./Context/AuthContext";
-import SignUp from "./Components/User/SignOut";
+import SignUp from "./Components/User/SignUp";
 import SignIn from "./Components/User/SignIn";
 import SignOut from "./Components/User/SignOut";
 import ChangePassword from "./Components/User/ChangePassword";
@@ -10,7 +9,7 @@ import ProductDetails from "./Components/Products/ProductDetails";
 import UpdateProduct from "./Components/Products/UpdateProducts";
 import Error from "./Components/Error/Error";
 
-import './App.css'
+import "./App.css";
 const App = () => {
   return (
     <AuthProvider>
