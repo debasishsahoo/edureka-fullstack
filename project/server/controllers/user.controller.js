@@ -108,14 +108,22 @@ const userController = {
   //PUT http://127.0.0.1:5000/api/user/change-password
   getUser: async (req, res) => {
     try {
-      const existing_user = await user.findById(req.user.id).select('-password');
-      if(existing_user)return res.status(200).json(existing_user);
+      const existing_user = await user
+        .findById(req.user.id)
+        .select("-password");
+      if (!existing_user) {
+        return res.status(400).json({
+          message: "User Dose Not Exist",
+        });
+      }
+
+      return res.status(200).json(existing_user);
     } catch (error) {
       return res.status(500).json({
         error: error.message,
       });
     }
-  }
+  },
 };
 
 module.exports = userController;

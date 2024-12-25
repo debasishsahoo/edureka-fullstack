@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "c5687596-88e5-4f6c-9f90-331e8a52e1c3",
+		"name": "EDUREKA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14840080"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"deb\",\r\n    \"email\":\"a@a.com\",\r\n    \"passsword\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/user/signup",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NGYwNzY3ZWJlZmMwMjQyZmNlMjg5NyIsImlhdCI6MTczMzMwNjgwOCwiZXhwIjoxNzMzMzEwNDA4fQ.GpbY2HKAFj49qnsLgRZ9lLuzWqyseSPJ2dx0k2LtEj4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"a@a.com\",\r\n    \"password\":\"1236\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/user/signin",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmFiNDcxOGYxMWE1ZmY5ZGFkYjViMiIsImlhdCI6MTczNTEyMDE5NiwiZXhwIjoxNzM1MTIzNzk2fQ.SwfAE1TKP_YiSovHMGBp93tjDGGQsT32qhi7xKOIHzQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"1235\",\r\n    \"newPassword\":\"1236\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/user/change-password",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmFiNDcxOGYxMWE1ZmY5ZGFkYjViMiIsImlhdCI6MTczNTEyMTU0OSwiZXhwIjoxNzM1MTI1MTQ5fQ.ryrOiKOeAUBROI2MNpX_XuEUpBv9aAzupvglos0jqHE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/user/get-user",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"get-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmFiNDcxOGYxMWE1ZmY5ZGFkYjViMiIsImlhdCI6MTczNTEyMjYyOCwiZXhwIjoxNzM1MTI2MjI4fQ.nzNJM-18jiCvt6Q8DPwLfvGLIRfFpzrk7Dm1N74D9Hc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Product-2\",\r\n    \"desc\":\"Desc-2\",\r\n    \"price\":20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/product/add",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"product",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmFiNDcxOGYxMWE1ZmY5ZGFkYjViMiIsImlhdCI6MTczNTEyMjYyOCwiZXhwIjoxNzM1MTI2MjI4fQ.nzNJM-18jiCvt6Q8DPwLfvGLIRfFpzrk7Dm1N74D9Hc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/product/view",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"product",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmFiNDcxOGYxMWE1ZmY5ZGFkYjViMiIsImlhdCI6MTczNTEyMjYyOCwiZXhwIjoxNzM1MTI2MjI4fQ.nzNJM-18jiCvt6Q8DPwLfvGLIRfFpzrk7Dm1N74D9Hc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/product/view/676be04616ff78da508ea483",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"product",
+								"view",
+								"676be04616ff78da508ea483"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmFiNDcxOGYxMWE1ZmY5ZGFkYjViMiIsImlhdCI6MTczNTEyMjYyOCwiZXhwIjoxNzM1MTI2MjI4fQ.nzNJM-18jiCvt6Q8DPwLfvGLIRfFpzrk7Dm1N74D9Hc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Product-20\",\r\n    \"desc\":\"Desc-20\",\r\n    \"price\":200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:5000/api/product/update/676be04616ff78da508ea483",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"product",
+								"update",
+								"676be04616ff78da508ea483"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NmFiNDcxOGYxMWE1ZmY5ZGFkYjViMiIsImlhdCI6MTczNTEyMjYyOCwiZXhwIjoxNzM1MTI2MjI4fQ.nzNJM-18jiCvt6Q8DPwLfvGLIRfFpzrk7Dm1N74D9Hc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:5000/api/product/delete/676be04616ff78da508ea483",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"product",
+								"delete",
+								"676be04616ff78da508ea483"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:5000/check",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"check"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
