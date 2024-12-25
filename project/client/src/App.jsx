@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./Context/AuthContext";
+import SignUp from "./Components/User/SignOut";
+import SignIn from "./Components/User/SignIn";
+import SignOut from "./Components/User/SignOut";
+import ChangePassword from "./Components/User/ChangePassword";
+import Product from "./Components/Products/Product";
+import ProductDetails from "./Components/Products/ProductDetails";
+import UpdateProduct from "./Components/Products/UpdateProducts";
+import Error from "./Components/Error/Error";
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <AuthProvider>
+      <Router>
+        <div className="app">
+          <Routes>
+            <Route path="/" exact element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/change-password" element={<ChangePassword />} />
+            <Route
+              path="/product"
+              element={
+                <>
+                  <SignOut />
+                  <Product />
+                </>
+              }
+            />
+            <Route path="/product/details/:id" element={<ProductDetails />} />
+            <Route path="/product/update/:id" element={<UpdateProduct />} />
 
-export default App
+            <Route path="*" element={<Error />} />
+            <Route />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
+  );
+};
+
+export default App;
