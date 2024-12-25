@@ -9,6 +9,8 @@ import Product from "./Components/Products/Product";
 import ProductDetails from "./Components/Products/ProductDetails";
 import UpdateProduct from "./Components/Products/UpdateProducts";
 import Error from "./Components/Error/Error";
+
+import './App.css'
 const App = () => {
   return (
     <AuthProvider>

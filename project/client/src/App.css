@@ -1,0 +1,262 @@
+/* Global Styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  
+  body {
+	font-family: Arial, sans-serif;
+	background-color: #f9f9f9;
+	color: #333;
+	line-height: 1.6;
+  }
+  
+  .app {
+	max-width: 700px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #ffffff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+  }
+  
+  /* Header Styles */
+  h2 {
+	text-align: center;
+	color: #333;
+	margin-bottom: 20px;
+	font-size: 1.8rem;
+  }
+  
+  /* Form Styles */
+  form {
+	margin-bottom: 20px;
+  }
+  
+  form input {
+	width: 100%;
+	padding: 12px 15px;
+	margin: 10px 0;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 1rem;
+	transition: border-color 0.2s;
+  }
+  
+  form input:focus {
+	border-color: #4CAF50;
+	outline: none;
+  }
+  
+  form button {
+	width: 100%;
+	padding: 12px;
+	margin-top: 10px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 1.1rem;
+	cursor: pointer;
+	transition: background-color 0.3s;
+  }
+  
+  form button:hover {
+	background-color: #45a049;
+  }
+  
+  /* Button Styles */
+  button {
+	padding: 10px 15px;
+	margin-top: 10px;
+	font-size: 1rem;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	background-color: #4CAF50;
+	color: #fff;
+	transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+	background-color: #45a049;
+  }
+  
+  /* List and Item Styles */
+  ul {
+	list-style: none;
+	padding: 0;
+  }
+  
+  li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px;
+	margin: 8px 0;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background-color: #fafafa;
+	transition: background-color 0.3s;
+  }
+  
+  li:hover {
+	background-color: #f0f0f0;
+  }
+  
+  li button {
+	padding: 8px 12px;
+	font-size: 0.9rem;
+	background-color: #ff4d4f;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+  }
+  
+  li button:hover {
+	background-color: #ff1a1a;
+  }
+  
+  /* Logout Button */
+  .logout-btn {
+	float: right;
+	padding: 8px 15px;
+	margin: 0 0 20px 0;
+	font-size: 0.9rem;
+	background-color: #ff4d4f;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+  }
+  
+  .logout-btn:hover {
+	background-color: #ff1a1a;
+  }
+  
+  /* Feedback & Alerts */
+  .alert {
+	padding: 12px;
+	margin-bottom: 20px;
+	border: 1px solid #ffcccc;
+	color: #cc0000;
+	background-color: #ffe6e6;
+	border-radius: 5px;
+	font-size: 0.9rem;
+	text-align: center;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+	.app {
+	  margin: 20px auto;
+	  padding: 15px;
+	}
+  
+	h2 {
+	  font-size: 1.5rem;
+	}
+  
+	form button,
+	button,
+	.logout-btn {
+	  font-size: 0.9rem;
+	}
+  }
+  
+  /* src/App.css */
+  
+  .register {
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #ffffff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+  }
+  
+  .register h2 {
+	text-align: center;
+	color: #333;
+	margin-bottom: 20px;
+  }
+  
+  .register form input {
+	width: 100%;
+	padding: 12px;
+	margin: 10px 0;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+  }
+  
+  .register form button {
+	width: 100%;
+	padding: 12px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+  }
+   .danger {
+	width: 50%;
+	padding: 5px;
+	background-color: #d12525;
+	color: white;
+	border: none;
+	border-radius: 1px;
+	cursor: pointer;
+  }
+  .danger:hover {
+	background-color: #f13a36;
+  }
+  
+  .register .error {
+	color: red;
+	text-align: center;
+	margin-top: 10px;
+  }
+  
+
+  table {
+	border-collapse: collapse;
+	width: 100%;
+  }
+  
+  th, td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #DDD;
+  }
+  
+  tr:hover {background-color: #D6EEEE;}
+
+
+
+#main{
+    display: table;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+.fof{
+	  display: table-cell;
+	  vertical-align: middle;
+}
+
+.fof h1{
+	  font-size: 50px;
+	  display: inline-block;
+	  padding-right: 12px;
+	  animation: type .5s alternate infinite;
+}
+
+@keyframes type{
+	  from{box-shadow: inset -3px 0px 0px #888;}
+	  to{box-shadow: inset -3px 0px 0px transparent;}
+}
